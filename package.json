@@ -1,0 +1,46 @@
+{
+  "name": "intentio",
+  "version": "0.1.0",
+  "description": "Focus-scoped command dispatch for React — one intent, dispatched by keyboard shortcuts, command palette, and buttons alike, resolved by where focus is. Flutter's Actions/Intents/Shortcuts, for the web.",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=17"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.12",
+    "jsdom": "^25.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "keywords": [
+    "react", "keyboard-shortcuts", "hotkeys", "command-palette",
+    "actions", "intents", "shortcuts", "focus", "commands", "keybindings"
+  ],
+  "license": "MIT",
+  "author": "kim dong joo"
+}
