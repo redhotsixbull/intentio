@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="380" viewBox="0 0 1280 380" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4338ca"/>
+      <stop offset="0.55" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#ffffff"/>
+    </marker>
+    <style>
+      .wm  { font: 800 88px system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill:#ffffff; letter-spacing:-2px }
+      .tag { font: 500 27px system-ui,-apple-system,sans-serif; fill:#eef0ff }
+      .sub { font: 400 18px system-ui,-apple-system,sans-serif; fill:#c9ccf7 }
+      .chip{ font: 600 20px ui-monospace,SFMono-Regular,Menlo,monospace; fill:#3730a3 }
+      .node{ font: 700 22px system-ui,sans-serif; fill:#ffffff }
+      .run { font: 700 19px system-ui,sans-serif; fill:#4f46e5 }
+    </style>
+  </defs>
+
+  <rect width="1280" height="380" fill="url(#bg)"/>
+
+  <!-- left: wordmark -->
+  <text x="72" y="180" class="wm">intentio</text>
+  <text x="76" y="226" class="tag">Focus-scoped command dispatch for React</text>
+  <text x="76" y="258" class="sub">Flutter’s Actions / Intents / Shortcuts, for the web</text>
+
+  <!-- right: three entry points -> one intent -> run -->
+  <!-- source chips -->
+  <g>
+    <rect x="700" y="96"  width="176" height="46" rx="12" fill="#ffffff"/>
+    <text x="788" y="126" text-anchor="middle" class="chip">⌘K palette</text>
+
+    <rect x="700" y="166" width="176" height="46" rx="12" fill="#ffffff"/>
+    <text x="788" y="196" text-anchor="middle" class="chip">shortcut</text>
+
+    <rect x="700" y="236" width="176" height="46" rx="12" fill="#ffffff"/>
+    <text x="788" y="266" text-anchor="middle" class="chip">button</text>
+  </g>
+
+  <!-- converging arrows -->
+  <g stroke="#ffffff" stroke-width="2.5" fill="none" opacity="0.9">
+    <path d="M876,119 C 936,119 936,189 986,189" marker-end="url(#arw)"/>
+    <path d="M876,189 L 986,189"                  marker-end="url(#arw)"/>
+    <path d="M876,259 C 936,259 936,189 986,189" marker-end="url(#arw)"/>
+  </g>
+
+  <!-- intent node -->
+  <rect x="992" y="166" width="140" height="46" rx="23" fill="#ffffff" fill-opacity="0.16" stroke="#ffffff" stroke-width="1.5"/>
+  <text x="1062" y="196" text-anchor="middle" class="node">intent</text>
+
+  <!-- arrow to run -->
+  <path d="M1132,189 L 1160,189" stroke="#ffffff" stroke-width="2.5" marker-end="url(#arw)"/>
+
+  <!-- run node -->
+  <rect x="1166" y="166" width="92" height="46" rx="12" fill="#ffffff"/>
+  <text x="1212" y="196" text-anchor="middle" class="run">run ✓</text>
+</svg>

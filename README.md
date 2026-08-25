@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/redhotsixbull/intentio/main/docs/banner.png" alt="intentio — focus-scoped command dispatch for React" width="840" />
+</p>
+
 # intentio
 
 [![npm](https://img.shields.io/npm/v/intentio.svg)](https://www.npmjs.com/package/intentio)
