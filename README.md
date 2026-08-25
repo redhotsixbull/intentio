@@ -132,7 +132,7 @@ command is invoked from a shortcut **and** a button **and** a menu.
 
 ## Status & roadmap
 
-`0.1.0` — core dispatch (shortcuts + actions + focus scoping + buttons). Planned:
+`0.1.1` — core dispatch (shortcuts + actions + focus scoping + buttons). Planned:
 a first-class **command-palette adapter** (derive a `Cmd-K` palette from the
 reachable + enabled intents), key sequences/chords, `aria-keyshortcuts` wiring,
 and an override-with-call-through helper.

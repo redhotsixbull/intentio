@@ -1,6 +1,6 @@
 {
   "name": "intentio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Focus-scoped command dispatch for React — one intent, dispatched by keyboard shortcuts, command palette, and buttons alike, resolved by where focus is. Flutter's Actions/Intents/Shortcuts, for the web.",
   "type": "module",
   "sideEffects": false,
