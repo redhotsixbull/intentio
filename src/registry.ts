@@ -11,9 +11,11 @@ export interface ScopeNode {
   parent: ScopeNode | null;
 }
 
-interface Binding {
+export interface Binding {
   chord: Chord;
   intentId: string;
+  /** Value carried by this shortcut, handed to the handler. */
+  payload: unknown;
 }
 
 // DOM element → scope, so we can resolve from `document.activeElement`.
@@ -67,7 +69,7 @@ function deepestActionScope(target: Node): ScopeNode | null {
   return best;
 }
 
-function resolveIntentId(target: Node, e: KeyboardEvent): string | null {
+function resolveBinding(target: Node, e: KeyboardEvent): Binding | null {
   // Deepest shortcut scope containing focus wins (inner bindings override outer).
   const containing: { d: number; bindings: Binding[] }[] = [];
   for (const [el, bindings] of shortcutScopes) {
@@ -75,7 +77,7 @@ function resolveIntentId(target: Node, e: KeyboardEvent): string | null {
   }
   containing.sort((a, b) => b.d - a.d);
   for (const { bindings } of containing) {
-    for (const b of bindings) if (matchesChord(b.chord, e)) return b.intentId;
+    for (const b of bindings) if (matchesChord(b.chord, e)) return b;
   }
   return null;
 }
@@ -107,13 +109,14 @@ let installed = false;
 
 function onKeyDown(e: KeyboardEvent): void {
   const active: Node = document.activeElement ?? document.body;
-  const intentId = resolveIntentId(active, e);
-  if (!intentId) return;
-  const scope = deepestActionScope(active);
-  if (dispatchFrom(scope, intentId, undefined)) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
+  const binding = resolveBinding(active, e);
+  if (!binding) return;
+  // The app has claimed this key → stop the browser default (e.g. ⌘D bookmark),
+  // whether or not an enabled handler ultimately runs. Unbound keys fall through
+  // untouched (we returned above), so normal typing is unaffected.
+  e.preventDefault();
+  e.stopPropagation();
+  dispatchFrom(deepestActionScope(active), binding.intentId, binding.payload);
 }
 
 export function ensureListener(): void {

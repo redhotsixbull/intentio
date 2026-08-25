@@ -116,6 +116,25 @@ describe('intentio — focus-scoped command dispatch', () => {
     expect(del).toHaveBeenCalledWith({ soft: true });
   });
 
+  it('a shortcut can carry a payload to the handler', async () => {
+    const user = userEvent.setup();
+    const trash = vi.fn();
+
+    render(
+      <Shortcuts map={{ 'Mod+Backspace': [Delete, { soft: true }] }}>
+        <Actions handlers={[handle(Delete, trash)]}>
+          <div data-testid="leaf" tabIndex={0}>
+            leaf
+          </div>
+        </Actions>
+      </Shortcuts>,
+    );
+
+    (screen.getByTestId('leaf') as HTMLDivElement).focus();
+    await user.keyboard('{Control>}{Backspace}{/Control}');
+    expect(trash).toHaveBeenCalledWith({ soft: true });
+  });
+
   it('does nothing when no binding matches (normal typing is untouched)', async () => {
     const user = userEvent.setup();
     const selectText = vi.fn();

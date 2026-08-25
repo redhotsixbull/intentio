@@ -14,13 +14,16 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "play": "vite playground"
   },
   "peerDependencies": {
     "react": ">=17"
@@ -30,17 +33,37 @@
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
     "jsdom": "^25.0.1",
+    "playwright": "^1.62.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",
+    "vite": "^6.0.7",
     "vitest": "^2.1.8"
   },
   "keywords": [
-    "react", "keyboard-shortcuts", "hotkeys", "command-palette",
-    "actions", "intents", "shortcuts", "focus", "commands", "keybindings"
+    "react",
+    "keyboard-shortcuts",
+    "hotkeys",
+    "command-palette",
+    "actions",
+    "intents",
+    "shortcuts",
+    "focus",
+    "commands",
+    "keybindings"
   ],
   "license": "MIT",
-  "author": "kim dong joo"
+  "author": "kim dong joo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redhotsixbull/intentio.git"
+  },
+  "homepage": "https://github.com/redhotsixbull/intentio#readme",
+  "bugs": {
+    "url": "https://github.com/redhotsixbull/intentio/issues"
+  }
 }

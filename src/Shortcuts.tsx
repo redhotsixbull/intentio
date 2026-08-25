@@ -5,9 +5,15 @@ import type { Intent } from './intent';
 
 const DISPLAY_CONTENTS = { display: 'contents' } as const;
 
+/**
+ * A shortcut target: an intent, or `[intent, payload]` to carry a value with the
+ * key press (e.g. `'Mod+Backspace': [Delete, { soft: true }]`).
+ */
+export type ShortcutTarget = Intent<unknown> | readonly [Intent<unknown>, unknown];
+
 export interface ShortcutsProps {
-  /** Map of binding string (`"Mod+a"`, `"Delete"`, `"Mod+Shift+p"`) → intent. */
-  map: Record<string, Intent<unknown>>;
+  /** Map of binding string (`"Mod+a"`, `"Delete"`, `"Mod+Shift+p"`) → target. */
+  map: Record<string, ShortcutTarget>;
   children: ReactNode;
 }
 
@@ -18,10 +24,12 @@ export interface ShortcutsProps {
  */
 export function Shortcuts({ map, children }: ShortcutsProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const bindings = Object.entries(map).map(([binding, intent]) => ({
-    chord: parseBinding(binding),
-    intentId: intent.id,
-  }));
+  const bindings = Object.entries(map).map(([binding, target]) => {
+    const [intent, payload] = Array.isArray(target)
+      ? (target as readonly [Intent<unknown>, unknown])
+      : [target as Intent<unknown>, undefined];
+    return { chord: parseBinding(binding), intentId: intent.id, payload };
+  });
 
   // Re-register bindings every render (cheap map write); keep the doc listener once.
   useLayoutEffect(() => {
