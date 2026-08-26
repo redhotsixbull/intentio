@@ -1,6 +1,6 @@
 {
   "name": "intentio",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Focus-scoped command dispatch for React — one intent, dispatched by keyboard shortcuts, command palette, and buttons alike, resolved by where focus is. Flutter's Actions/Intents/Shortcuts, for the web.",
   "type": "module",
   "sideEffects": false,
@@ -32,6 +32,7 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^26.3.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
