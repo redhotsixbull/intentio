@@ -136,16 +136,21 @@ command is invoked from a shortcut **and** a button **and** a menu.
 
 ## Status & roadmap
 
-`0.1.1` — core dispatch (shortcuts + actions + focus scoping + buttons). Planned:
-a first-class **command-palette adapter** (derive a `Cmd-K` palette from the
-reachable + enabled intents), key sequences/chords, `aria-keyshortcuts` wiring,
-and an override-with-call-through helper.
+**Shipped:** core dispatch — shortcuts, actions, focus scoping, and buttons
+sharing one enabled state.
+
+**Planned:** a first-class **command-palette adapter** (derive a `Cmd-K` palette
+from the reachable + enabled intents), key sequences/chords, `aria-keyshortcuts`
+wiring, and an override-with-call-through helper.
+
+This README describes the library as it is now and carries no version numbers —
+the npm badge above is the current version.
 
 ## Development
 
 ```bash
 pnpm install
-pnpm test        # vitest — 14 tests
+pnpm test        # vitest
 pnpm play        # the playground at http://localhost:8093
 pnpm build       # tsup → dist (ESM + CJS + d.ts)
 ```
