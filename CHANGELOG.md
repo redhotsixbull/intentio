@@ -18,6 +18,10 @@ Documentation hygiene — no API changes.
   README to point when its version stamp came out.
 - Added `@types/node` as a dev dependency so the new test typechecks under
   `tsc --noEmit` (it reads files from disk).
+- **`CHANGELOG.md` now ships in the npm tarball.** `files` was `["dist"]`, and
+  npm only force-includes `package.json`, the README and the licence — so the
+  changelog this release introduces would never have reached anyone installing
+  from npm. A new guard in `test/docs.test.ts` keeps it listed.
 
 ## 0.1.1
 
