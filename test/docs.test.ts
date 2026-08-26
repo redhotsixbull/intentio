@@ -42,6 +42,18 @@ describe('docs stay current', () => {
     ).toBe(version);
   });
 
+  it('CHANGELOG.md ships in the npm tarball', () => {
+    // npm force-includes only package.json, the README and the licence. Anything
+    // else has to be listed in `files` — and a changelog nobody installing from
+    // npm can read is not much of a changelog.
+    const files = JSON.parse(read('package.json')).files as string[];
+
+    expect(
+      files,
+      "package.json `files` must list CHANGELOG.md, or it won't reach npm consumers.",
+    ).toContain('CHANGELOG.md');
+  });
+
   it('README documents every runtime export', () => {
     // `export type` lines are omitted on purpose: the README's API table is for
     // things you call or render, and TS types are visible in the editor anyway.
